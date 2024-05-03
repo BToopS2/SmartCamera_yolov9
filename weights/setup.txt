@@ -1,1 +1,3 @@
 tải các file model đuôi .pt của yolov9 và v8 về. nếu v8 thì chạy file yolov8.py
+( link tải file pre-train private của team)
+https://drive.google.com/drive/folders/13aQVkeWsaUcGqiNhDvxY6E5if8r4PR4V?usp=sharing
