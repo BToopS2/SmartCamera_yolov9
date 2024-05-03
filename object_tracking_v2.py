@@ -120,8 +120,8 @@ video_path = "data_ext/videoclass.mp4"
 conf_threshold = 0.2
 tracking_class = 0  # None: track all
 skip_frames = 3  # Process every 3rd frame
-resize_width = 960  # Adjust based on your needs
-resize_height = 640  # Adjust based on your needs
+resize_width = 1280  # Adjust based on your needs
+resize_height = 720  # Adjust based on your needs
 frame_count = 0
 
 # Initialize DeepSort
@@ -208,11 +208,11 @@ while True:
             B, G, R = map(int, color)
             confidence = float(confidence)
             confidence = round(confidence, 2)
-            label = "{}-{}-{}".format(class_names[class_id], track_id, confidence)
+            label = "ID-{} : {}".format(track_id, class_names[class_id]) #confidence
 
             cv2.rectangle(frame, (x1, y1), (x2, y2), (148, 238, 148), 1)
-            cv2.rectangle(frame, (x1 , y1 - 20), (x1 + len(label) * 8, y1), (148, 238, 148), -1)
-            cv2.putText(frame, label, (x1 + 5, y1 - 8), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, (255, 255, 255), 1)
+            cv2.rectangle(frame, (x1 , y1 - 20), (x1 + len(label) * 11, y1), (148, 238, 148), -1)
+            cv2.putText(frame, label, (x1 + 5, y1 - 8), cv2.FONT_HERSHEY_COMPLEX, 0.5, (255, 255, 255), 1)
         
     # Print number of "person" detections in the frame
     num_persons_text = f"Number prs: {num_persons}"

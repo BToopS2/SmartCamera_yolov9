@@ -220,6 +220,7 @@
 # cv2.destroyAllWindows()
 
 import cv2
+# cv2.VideoCapture.set(cv2.CAP_PROP_FFMPEG_TIMEOUT, 60000)
 import torch
 import numpy as np
 from deep_sort_realtime.deepsort_tracker import DeepSort
@@ -230,22 +231,23 @@ print(torch.cuda.is_available())
 print(torch.__version__)
 
 # Config values
-video_path = "data_ext/people.mp4"
+# video_path = "rtsp://admin:Qazxsw123@192.168.88.20:554/cam/realmonitor?channel=1&subtype=0"
+video_path="data_ext/videoclass.mp4"
 # video_path=0
-conf_threshold = 0.2
-tracking_class = 0  # None: track all
-skip_frames = 4  # Process every 3rd frame
+conf_threshold = 0.1
+tracking_class = None  # None: track all
+skip_frames = 1  # Process every 3rd frame
 frame_count = 0
 
 # Initialize DeepSort
-tracker = DeepSort(max_age=25)
+tracker = DeepSort(max_age=10)
 
 # Initialize YOLOv9
-model = DetectMultiBackend(weights="weights/yolov9-c-converted.pt", device=device, fuse=True)
+model = DetectMultiBackend(weights="weights/best-4acts-v1.pt", device=device, fuse=True)
 model = AutoShape(model)
 
 # Load class names
-with open("data_ext/classes.names") as f:
+with open("data_ext/classes-action.names") as f:
     class_names = f.read().strip().split('\n')
 
 colors = np.random.randint(0, 255, size=(len(class_names), 3))
@@ -312,8 +314,8 @@ while True:
             confidence = round(confidence, 2)
             label = "{}-{}-{}".format(class_names[class_id], track_id, confidence)
 
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (148, 238, 148), 1)
-            cv2.rectangle(frame, (x1 , y1 - 20), (x1 + len(label) * 8, y1), (148, 238, 148), -1)
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (B, G, R), 1)
+            cv2.rectangle(frame, (x1 , y1 - 20), (x1 + len(label) * 8, y1), (B, G, R), -1)    #148,238,148
             cv2.putText(frame, label, (x1 + 5, y1 - 8), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, (255, 255, 255), 1)
         
     

@@ -23,7 +23,7 @@ tracking_class = 0 # None: track all
 tracker = DeepSort(max_age=20)
 
 # Initialize YOLOv9
-model  = DetectMultiBackend(weights="weights/yolov9-c-converted.pt", device=device, fuse=True)
+model  = DetectMultiBackend(weights="weights/yolov9-c.pt", device=device, fuse=True)
 model  = AutoShape(model)
 
 # Load class names from file
