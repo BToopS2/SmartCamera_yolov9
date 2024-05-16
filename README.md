@@ -2,6 +2,7 @@
 ## " pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2 -f https://download.pytorch.org/whl/torch_stable.html " (cài cuda+torch bằng lệnh này như này)
 
 ## Sau khi chạy file requirements.txt để cài thư viện xong thì chạy thêm lệnh " pip install deep_sort_realtime" và lệnh " pip install mediapipe " (nếu chưa có 2 thư viện này hoặc báo lỗi thiếu thư viện nào thì cài thư viện đó.
+## https://drive.google.com/drive/folders/13aQVkeWsaUcGqiNhDvxY6E5if8r4PR4V  (link file weight-preTrain tổng hợp)
 # YOLOv9
 
 Implementation of paper - [YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information](https://arxiv.org/abs/2402.13616)
